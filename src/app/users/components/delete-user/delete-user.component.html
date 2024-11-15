@@ -1,0 +1,8 @@
+<p>delete-user works!</p>
+<div class="delete-user-container">
+    <h2>Êtes-vous sûr de vouloir supprimer cet utilisateur ?</h2>
+    <p>ID de l'utilisateur à supprimer : {{ userId }}</p>
+  
+    <button (click)="deleteUser()">Validate</button>
+    <button (click)="router.navigate(['/users'])">Cancel</button>
+  </div>

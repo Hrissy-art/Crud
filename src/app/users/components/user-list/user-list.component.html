@@ -1,0 +1,25 @@
+<div class="user-list-container">
+    <h2>Liste des utilisateurs</h2>
+@if(users$ | async; as users) {
+    <div class="user-item">
+    @for(user of users; track $index) {
+        <div class="user-details">
+
+    <p>{{ user.username }}</p>
+    <p>{{ user.email }}</p>
+
+    <a [routerLink]="['/delete', user.id]">Delete</a>
+    <a [routerLink]="['/update', user.id]">Update</a>
+
+    </div>
+    }
+</div>
+    }
+
+    <!-- <div class="user-actions"></div>
+        <button class="update-btn" (click)="updateUser(user.id)">Mettre à jour</button>
+        <button class="delete-btn" (click)="deleteUser(user.id)">Supprimer</button>
+      </div> -->
+</div>
+
+  

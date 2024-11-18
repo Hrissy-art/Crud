@@ -1,8 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import {  User } from '../../../models/message.model';
-import { ApiService } from '../services/api.service';
-import { Observable } from 'rxjs';
+import { User } from '../../../models/message.model';
 
 @Component({
   selector: 'app-create-user',
@@ -13,31 +11,12 @@ import { Observable } from 'rxjs';
 })
 export class CreateUserComponent {
 
-  newUser: User = {
-    id: "",
-    username: "",
-    email: "",
-  };
-contactForm: any;
+  private _userApiService: ApiService = inject(UserApiService);
+  user: User = new User("", "", "");
 
-
-private _apiService: ApiService = inject(ApiService);
-
-constructor() {
-  
-  this.newUser.id = (Date.now()).toString();  
-}
   onSubmit(): void {
-    
-
-    this._apiService.createUser$(this.newUser).subscribe({
-      next: (user) => {
-        console.log('Utilisateur créé avec succès :', user);
-      },
-      error: (err) => {
-        console.error('Erreur lors de la création de l\'utilisateur :', err);
-      }
-    });
-    console.log(this.newUser);
+    const userId = Math.floor(Math.random() * 1000).toString();
+    this.user.id = userId;
+    this._userApiService.post$(this.user);
   }
 }

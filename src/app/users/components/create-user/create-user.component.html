@@ -1,38 +1,9 @@
-<p>create-user works!</p>
-<form #contactForm="ngForm" (ngSubmit)="contactForm.valid && onSubmit()">
-    
-  
-    <fieldset>
-      <label for="username">Prénom</label>
-      <input id="username" name="username" [(ngModel)]="newUser.username"
-      #firstname="ngModel" type="text" require min="2">
-      @if (firstname.errors) {
-        <div>
-          @if (firstname.errors['required']) {
-            <span>Le prénom est requis</span>
-          }
-          @if (firstname.errors['minlength']) {
-            <span>La longueur minimale doit être supérieure à 2</span>
-          }
-        </div>
-      }
-    </fieldset>
-  
-    <fieldset>
-      <label for="email">Contact</label>
-      <input id="email" name="email" [(ngModel)]="newUser.email"
-      #email="ngModel" type="email" require email>
-      @if (email.errors) {
-        <div>
-          @if (email.errors['required']) {
-            <span>L'email est requis</span>
-          }
-          @if (email.errors['email']) {
-            <span>Veuillez fournir une adresse email valide</span>
-          }
-        </div>
-      }
-    </fieldset>
-  
-    <button type="submit">Ajouter</button>
-  </form>
+<form #myForm="ngForm" (ngSubmit)="onSubmit()">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" [(ngModel)]="user.email" placeholder="Votre email...">
+
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" [(ngModel)]="user.username" placeholder="Votre pseudo...">
+
+    <button type="submit">Créer utilisateur</button>
+</form>

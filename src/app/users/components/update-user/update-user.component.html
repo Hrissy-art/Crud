@@ -1,39 +1,9 @@
- 
+<form #myForm="ngForm" (ngSubmit)="onSubmit()">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" [(ngModel)]="user.email" placeholder="Votre email...">
 
-  <form *ngIf="editableUser" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="username">Nom d'utilisateur:</label>
-      <input
-        type="text"
-        id="username"
-        [(ngModel)]="editableUser.username"
-        name="username"
-        required
-        placeholder="Nom d'utilisateur"
-      />
-    </div>
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" [(ngModel)]="user.username" placeholder="Votre pseudo...">
 
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <input
-        type="email"
-        id="email"
-        [(ngModel)]="editableUser.email"
-        name="email"
-        required
-        placeholder="Email"
-      />
-    </div>
-
-    <button
-      type="submit"
-      [disabled]="!editableUser.username || !editableUser.email"
-    >
-      Mettre à jour
-    </button>
-  </form>
-
-  <!-- Affiche un message si l'utilisateur n'est pas trouvé -->
-  <div *ngIf="!editableUser">
-    <p>Chargement des données utilisateur ou utilisateur non trouvé.</p>
-  </div>
+    <button type="submit">Mettre à jour</button>
+</form>

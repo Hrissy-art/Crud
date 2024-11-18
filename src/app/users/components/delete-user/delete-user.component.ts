@@ -15,7 +15,7 @@ export class DeleteUserComponent {
    router: Router = inject(Router);
   private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
 
-  userId: number;
+  userId: string;
 
   constructor() {
     this.userId = this.activatedRoute.snapshot.params['id'];

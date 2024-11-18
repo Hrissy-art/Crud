@@ -24,7 +24,7 @@ export class ApiService {
   }
   
 
-  deleteUser$(id: number): Observable<void> {
+  deleteUser$(id: string): Observable<void> {
     return this.http.delete<void>(`${this._BASE_API_URL}/${id}`);
   }
 }

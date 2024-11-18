@@ -8,7 +8,7 @@ import { User } from '../../../models/message.model';
 })
 export class ApiService {
 
-  private  _BASE_API_URL: string = 'http://localhost:3000/';
+  private  _BASE_API_URL: string = "http://localhost:3000/";
   private _http = inject(HttpClient);
 
   getAllUsers$(): Observable<User[]> {
@@ -20,11 +20,11 @@ export class ApiService {
     this._http.post<User>(this._BASE_API_URL + "users", newUser).subscribe();
   }
   updateUser$(updatedUser: User): void {
-     this._http.put<User>(this._BASE_API_URL + "users", updatedUser).subscribe();
+     this._http.put<User>(this._BASE_API_URL + "users/" + updatedUser.id, updatedUser).subscribe();
   }
   
 
   deleteUser$(id: string): void {
-    this._http.delete<void>(this._BASE_API_URL + "users/" + id).subscribe;
+    this._http.delete<void>(this._BASE_API_URL + "users/" + id).subscribe();
   }
 }

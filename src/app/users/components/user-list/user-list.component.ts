@@ -4,11 +4,14 @@ import { Observable } from 'rxjs';
 import { User } from '../../../models/message.model';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { UpdateUserComponent } from "../update-user/update-user.component";
+import { DeleteUserComponent } from "../delete-user/delete-user.component";
+import { ClonePipe } from "../../../core/clone.pipe";
 
 @Component({
   selector: 'app-user-list',
   standalone: true,
-  imports: [AsyncPipe, CommonModule, RouterModule],
+  imports: [AsyncPipe, CommonModule, RouterModule, UpdateUserComponent, DeleteUserComponent, ClonePipe],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.css'
 })

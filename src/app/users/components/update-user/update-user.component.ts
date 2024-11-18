@@ -13,9 +13,9 @@ import { map, Observable, switchMap, tap } from 'rxjs';
   templateUrl: './update-user.component.html',
   styleUrl: './update-user.component.css'
 })
-export class UpdateUserComponent{
+export class UpdateUserComponent {
   private _userApiService: ApiService = inject(ApiService);
-  @Input({ required:true}) user!: User
+  @Input({ required:true}) user!: User;
 
   onSubmit(): void {
     this._userApiService.updateUser$(this.user);

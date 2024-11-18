@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
@@ -11,25 +11,14 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 })
 export class DeleteUserComponent {
 
-  private _apiService: ApiService = inject(ApiService);
+  private _userApiService: ApiService = inject(ApiService);
    router: Router = inject(Router);
   private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
+  @Input({ required: true }) userID!: string;
 
-  userId: string;
-
-  constructor() {
-    this.userId = this.activatedRoute.snapshot.params['id'];
-  }
 
   deleteUser(): void {
-    this._apiService.deleteUser$(this.userId).subscribe({
-      next: () => {
-        console.log(`Utilisateur avec id ${this.userId} supprimé.`);
-        this.router.navigate(['/users']);
-      },
-      error: (err: any) => {
-        console.error('Erreur lors de la suppression de l\'utilisateur :', err);
-      }
-    });
+    this._userApiService.deleteUser$(this.userID);
   }
+
 }

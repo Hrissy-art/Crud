@@ -15,10 +15,11 @@ export class ApiService {
     return this.http.get<User[]>(this._BASE_API_URL);
   }
 
+  
   createUser$(newUser: User): Observable<User> {
     return this.http.post<User>(this._BASE_API_URL, newUser);
   }
-  updateUser$(id: number, updatedUser: User): Observable<User> {
+  updateUser$(id: string, updatedUser: User): Observable<User> {
     return this.http.put<User>(`${this._BASE_API_URL}/${id}`, updatedUser);
   }
   

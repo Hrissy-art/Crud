@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
 export class CreateUserComponent {
 
   newUser: User = {
-    id: 0,
+    id: "",
     username: "",
     email: "",
   };
@@ -23,7 +23,13 @@ contactForm: any;
 
 private _apiService: ApiService = inject(ApiService);
 
+constructor() {
+  
+  this.newUser.id = (Date.now()).toString();  
+}
   onSubmit(): void {
+    
+
     this._apiService.createUser$(this.newUser).subscribe({
       next: (user) => {
         console.log('Utilisateur créé avec succès :', user);

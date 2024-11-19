@@ -21,6 +21,6 @@ export class UserFacadeService {
 post$(user: User){
   this._api.createUser$(user).pipe(
     tap((user: User) => this._store.add$(user))
-  )
+  ).subscribe();
 }
 }

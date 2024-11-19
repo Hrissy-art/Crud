@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { UpdateUserComponent } from "../update-user/update-user.component";
 import { DeleteUserComponent } from "../delete-user/delete-user.component";
 import { ClonePipe } from "../../../core/clone.pipe";
+import { UserFacadeService } from '../services/user-facade.service';
 
 @Component({
   selector: 'app-user-list',
@@ -17,6 +18,7 @@ import { ClonePipe } from "../../../core/clone.pipe";
 })
 export class UserListComponent {
 
+  private _facadeUserService: UserFacadeService = inject(UserFacadeService);
   private _apiService: ApiService = inject(ApiService);
-  users$: Observable<User[]> = this._apiService.getAllUsers$();
+  users$: Observable<User[]> = this._facadeUserService.getAll$();
 }

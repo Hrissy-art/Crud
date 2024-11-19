@@ -17,4 +17,10 @@ export class UserFacadeService {
   return this._api.getAllUsers$().pipe(
       switchMap(users => this._store.setAll$(users)) //je passe du premier observable au deixème 
     )
-}}
+}
+post$(user: User){
+  this._api.createUser$(user).pipe(
+    tap((user: User) => this._store.add$(user))
+  )
+}
+}
